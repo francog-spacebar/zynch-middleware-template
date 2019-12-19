@@ -49,11 +49,9 @@ class App extends Component {
     }
     this.props.setNotifications(this.notification)
     this.props.setUrl(this.url)
-    this.state = { loading: true } //Declarar como true si es necesario verificar que el
-    //usuario tenga una sesión activa antes de continuar.
+    this.state = { loading: true }
   }
   componentDidMount() {
-    this.setState({ loading: true })
     this.authenticate((isAuth, user) => {
       if (isAuth) {
         this.props.setAuth(isAuth)
