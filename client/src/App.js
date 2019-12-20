@@ -41,7 +41,7 @@ class App extends Component {
     this.notification = this.notification.bind(this)
     this.notificationDOMRef = React.createRef()
     if (process.env.NODE_ENV === 'production') {
-      this.url = ``
+      this.url = `http:localhost:80`
     } else {
       this.url = `http://${process.env.REACT_APP_HOST}:${process.env.REACT_APP_PORT}`
     }
