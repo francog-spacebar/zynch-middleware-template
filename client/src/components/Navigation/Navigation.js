@@ -41,31 +41,11 @@ class Navigation extends Component {
               onSelect={this.closeNav}
             >
               {this.props.user ? (
-                this.props.user.active ? (
-                  <Nav className="mr-auto">
-                    <LinkContainer to="/profile">
-                      <Nav.Link>Perfil</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/instrucciones">
-                      <Nav.Link>Instrucciones</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/app">
-                      <Nav.Link>App</Nav.Link>
-                    </LinkContainer>
-                  </Nav>
-                ) : (
-                  <Nav className="mr-auto">
-                    <LinkContainer to="/profile">
-                      <Nav.Link>Perfil</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/activar">
-                      <Nav.Link>Activar mi cuenta</Nav.Link>
-                    </LinkContainer>
-                    <LinkContainer to="/instrucciones">
-                      <Nav.Link>Instrucciones</Nav.Link>
-                    </LinkContainer>
-                  </Nav>
-                )
+                <Nav className="mr-auto">
+                  <LinkContainer to="/profile">
+                    <Nav.Link>Perfil</Nav.Link>
+                  </LinkContainer>
+                </Nav>
               ) : null}
               <Nav>
                 <LinkContainer to="/profile">
