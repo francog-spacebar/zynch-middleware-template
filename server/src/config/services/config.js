@@ -30,7 +30,8 @@ const test = {
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
   clientStaticFolder: path.join(basePath, 'client/build/static'),
-  clientBuildFolder: path.join(basePath, 'client/build')
+  clientBuildFolder: path.join(basePath, 'client/build'),
+  noodoeUrl: process.env.NOODOE_API_URL
 }
 
 /**
@@ -48,7 +49,8 @@ const development = {
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
   clientStaticFolder: path.join(basePath, 'client/build/static'),
-  clientBuildFolder: path.join(basePath, 'client/build')
+  clientBuildFolder: path.join(basePath, 'client/build'),
+  noodoeUrl: process.env.NOODOE_API_URL
 }
 /**
  * Production config
@@ -65,7 +67,8 @@ const production = {
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
   clientStaticFolder: path.join(basePath, 'client/static'),
-  clientBuildFolder: path.join(basePath, 'client')
+  clientBuildFolder: path.join(basePath, 'client'),
+  noodoeUrl: process.env.NOODOE_API_URL
 }
 
 const config = {

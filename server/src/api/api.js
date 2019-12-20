@@ -1,7 +1,9 @@
 const { log } = require('../config')
-
+const request = require('request')
+const config = require('../config/').config
 const api = {}
 
+console.log(config)
 api.allowOwnerSwapBattery = (req, res, next) => {
   if (req.query.ownerId) {
     res.json({
@@ -187,25 +189,32 @@ api.getOwnerRecord = (req, res, next) => {
 }
 
 api.getBatteryStatus = (req, res, next) => {
+  log.debug('API Endpoint /getBatteryStatus has been requested')
   const query = req.query
-  console.log(req)
+  const endpoint = 'getBatteryStatus'
   if (query.batteryId) {
-    res.json({
-      status: 'Ok',
-      type: 'getBatteryStatus',
-      batterySN: 'A0B1C2D3E4F5',
-      state: ['idle', 'charging', 'discharging'],
-      chargingRemainingMinutes: 9999,
-      IOCurrent: 1,
-      health: 0.999,
-      message: 'Not implemented'
-    })
+    request(
+      {
+        method: 'POST',
+        uri: `${config.noodoeUrl}${endpoint}`,
+        qs: { batteryId: query.batteryId }
+      },
+      (err, response, body) => {
+        if (err) {
+          res.json({ err, status: 'Error' })
+        } else {
+          res.json({
+            endpoint,
+            response: JSON.parse(response.body)
+          })
+        }
+      }
+    )
   } else {
     res.json({
       status: 'Error',
-      type: 'getBatteyStatus',
-      error: 'Error code',
-      message: 'An error ocurred'
+      endpoint,
+      message: 'Malformed Request'
     })
   }
 }
