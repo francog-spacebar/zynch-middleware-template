@@ -5,81 +5,13 @@ const logout = require('./services/logout')
 const middleware = require('./services/middleware')
 const { register } = require('./services/registration')
 const { recovery, recoveryHash } = require('./services/recovery')
-const { updatePushToken, removePushToken } = require('./services/push')
-const { activate } = require('./services/activation')
 const { profileUpdate, profileRemove } = require('./services/profile')
 const mail = require('../common/services/email')
 const { log } = require('../config')
 const passport = require('passport')
 const action = {}
 const moment = require('moment')
-const deactivateExpiredUsers = require('./services/cronjob')
 moment().format()
-
-/**
- * Activate cronjob for deactivating users automagically
- */
-deactivateExpiredUsers.start()
-
-/**
- * Set users' push token for notifications
- */
-action.setPushToken = (req, res) => {
-  log.verbose('Setting new push token...')
-  if (req.isAuthenticated()) {
-    updatePushToken(req.body.user.email, req.body.token.value, err => {
-      if (err) {
-        log.verbose('There was en error while updating the database')
-        return res.json({
-          type: 'checklogin',
-          success: false
-        })
-      } else {
-        log.verbose('Push token update succesful')
-        return res.json({
-          type: 'pushtoken',
-          success: true
-        })
-      }
-    })
-  } else {
-    log.verbose('Failed, user not logged in!')
-    return res.json({
-      type: 'pushtoken',
-      success: false
-    })
-  }
-}
-
-/**
- * Remove users' push token for notifications
- */
-action.removePushToken = (req, res) => {
-  log.verbose('Setting new push token...')
-  if (req.isAuthenticated()) {
-    removePushToken(req.token.value, err => {
-      if (err) {
-        log.verbose('There was en error while updating the redis server')
-        return res.json({
-          type: 'checklogin',
-          success: false
-        })
-      } else {
-        log.verbose('Push token remove succesful')
-        return res.json({
-          type: 'pushtoken',
-          success: true
-        })
-      }
-    })
-  } else {
-    log.verbose('Failed, user not logged in!')
-    return res.json({
-      type: 'pushtoken',
-      success: false
-    })
-  }
-}
 
 /**
  * Check login
@@ -196,86 +128,15 @@ action.registration = (req, res, next) => {
   register(data, (err, user) => {
     if (!err && user) {
       log.debug('Registration success! activation hash: ' + user.activation)
-      mail.send(
-        {
-          to: data.email,
-          subject: 'Registro',
-          content:
-            '<hr /><h2 style="text-align: center;"> Bienvenido/a!</h2>' +
-            '<h2 style="text-align: center;">Tu registro fue exitoso!</h2>' +
-            '<h3 style="text-align: center;">Activa tu cuenta ' +
-            '<a href="https://www.confettibot.com/activar" target="_new">aquí</a>. <br /><br /><hr />' +
-            '<p>Renuncia de responsabilidad: </p><br />' +
-            require('./services/disclaimer').disclaimer +
-            '<hr />'
-        },
-        (error, sent) => {
-          if (!error && sent) {
-            return res.json({
-              type: 'registration',
-              success: true
-            })
-          } else {
-            return res.json({
-              type: 'registration',
-              success: true
-            })
-          }
-        }
-      )
+      return res.json({
+        type: 'registration',
+        success: true
+      })
     } else {
       log.debug('Registration failed!')
       return res.json({
         type: 'registration',
         success: false
-      })
-    }
-  })
-}
-
-/**
- * Payment received via CoinPayments
- */
-action.activation = (req, res, next) => {
-  activate(req, (err, user) => {
-    if (!err && user) {
-      log.info(`Payment confirmed, activation success! [User ID: ${user.id}]`)
-      var expiration = moment(user.expirationDate)
-      mail.send(
-        {
-          to: user.email,
-          subject: 'Tu cuenta ha sido activada.',
-          content:
-            '<hr /><h2 style="text-align: center;"> Bienvenido/a!</h2>' +
-            '<h2 style="text-align: center;">Tu cuenta ha sido activada. Muchas gracias.</h2>' +
-            `<h3 style="text-align: center;">Fecha de expiración: ${expiration
-              .locale('es')
-              .format('LL')}<br /><br />` +
-            'Ahora puedes iniciar sesión <a href="https://www.confettibot.com/login" target="_new">aquí</a>.<br /><br />' +
-            'A ganar mucho pero mucho dinero!!!</h3><br/ ><hr />' +
-            '<p style="text- align: left;">Renuncia de responsabilidad:<br />' +
-            require('./services/disclaimer').disclaimer +
-            '</p><hr />'
-        },
-        (error, sent) => {
-          if (!error && sent) {
-            return res.json({
-              type: 'status',
-              success: 200
-            })
-          } else {
-            return res.json({
-              type: 'status',
-              success: 400
-            })
-          }
-        }
-      )
-    } else {
-      log.error('Activation failed!')
-      return res.json({
-        type: 'status',
-        success: 400
       })
     }
   })
@@ -295,8 +156,7 @@ action.recovery = (req, res, next) => {
             to: user.email,
             subject: 'Recuperar contraseña',
             content:
-              '<h1>Recovery</h1>Haz click <a href="https://confettibot.com/recovery/" target="_new">' +
-              user.recovery +
+              '<h1>Recovery</h1>Haz click aquí' +
               '</a> para cambiar tu contraseña.'
           },
           (err, sent) => {

@@ -30,8 +30,7 @@ const test = {
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
   clientStaticFolder: path.join(basePath, 'client/build/static'),
-  clientBuildFolder: path.join(basePath, 'client/build'),
-  localPyConfettibotUrl: 'ws://192.168.0.3:19010'
+  clientBuildFolder: path.join(basePath, 'client/build')
 }
 
 /**
@@ -49,8 +48,7 @@ const development = {
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
   clientStaticFolder: path.join(basePath, 'client/build/static'),
-  clientBuildFolder: path.join(basePath, 'client/build'),
-  localPyConfettibotUrl: 'ws://192.168.0.3:19010'
+  clientBuildFolder: path.join(basePath, 'client/build')
 }
 /**
  * Production config
@@ -67,8 +65,7 @@ const production = {
     process.env.DB_PASS
   )}@${process.env.DB_HOST}`,
   clientStaticFolder: path.join(basePath, 'client/static'),
-  clientBuildFolder: path.join(basePath, 'client'),
-  localPyConfettibotUrl: 'ws://localhost:19010'
+  clientBuildFolder: path.join(basePath, 'client')
 }
 
 const config = {

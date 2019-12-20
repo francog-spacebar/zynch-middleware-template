@@ -12,8 +12,5 @@ router.post('/recovery', user.recovery)
 router.post('/passchange', user.passChange)
 router.post('/profileupdate', user.profileUpdate)
 router.delete('/profileremove', user.profileRemove)
-router.post('/activation', user.activation)
-router.post('/pushtoken', user.setPushToken)
-router.post('/removepushtoken', user.removePushToken)
 
 module.exports = router

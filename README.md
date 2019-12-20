@@ -1,14 +1,10 @@
 **Environment Files**
-Hay que crear archivos que contengan las variables de entorno necesarias
-para tener las configuraciones correctas y poder realizar las conexiones
+
+Por motivos de seguridad hay que crear archivos que contengan las variables de entorno necesarias para tener las configuraciones correctas y poder realizar las conexiones
 a servicios externos como bases de datos y APIs de terceros, como Noodoe.
 
 En la carpeta server, crear una carpeta llamada `.env` y en ella crear los
 archivos `test.config.env`, `development.config.env` y `production.config.env`
-que contengan las siguientes variables. _En el archivo `production.config.env`,
-la variable `PORT` debe ser tener el valor `80`_.
-
-`.config.env` y `production.config.env`
 que contengan las siguientes variables. _En el archivo `production.config.env`,
 la variable `PORT` debe ser tener el valor `80`_.
 

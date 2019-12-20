@@ -6,7 +6,6 @@ import Home from './components/Home/Home'
 import Login from './components/Login/Login'
 import Logout from './components/Logout/Logout'
 import Registration from './components/Registration/Registration'
-import ActivationHash from './components/ActivationHash/ActivationHash'
 import Recovery from './components/Recovery/Recovery'
 import RecoveryHash from './components/RecoveryHash/RecoveryHash'
 import Error from './components/Error/Error'
@@ -14,7 +13,6 @@ import Navigation from './components/Navigation/Navigation'
 import Profile from './components/Profile/Profile'
 import Instructions from './components/Instructions/Instructions'
 import SubscriptionInfo from './components/SubscriptionInfo/SubscriptionInfo'
-import Subscription from './components/Subscription/Subscription'
 import { connect } from 'react-redux'
 import {
   setUrl,
@@ -101,11 +99,6 @@ class App extends Component {
               <Route path="/logout" component={Logout} exact />
               <Route path="/planes" component={SubscriptionInfo} exact />
               <Route path="/registration" component={Registration} exact />
-              <Route
-                path="/activation/:hash"
-                component={ActivationHash}
-                exact
-              />
               <Route path="/recovery" component={Recovery} exact />
               <Route path="/recovery/:hash" component={RecoveryHash} />
               <Route
@@ -117,12 +110,6 @@ class App extends Component {
               <PrivateRoute
                 path="/profile"
                 component={Profile}
-                authenticated={this.props.authenticated}
-                exact
-              />
-              <PrivateRoute
-                path="/activar"
-                component={Subscription}
                 authenticated={this.props.authenticated}
                 exact
               />

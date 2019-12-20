@@ -30,6 +30,9 @@ class SubscriptionInfo extends Component {
           color={'gray'}
           size="s"
         /> PayPal{' '}
+        <FontAwesomeIcon icon={icons.faBitcoin} color={'gray'} size="s" /> BTC{' '}
+        <FontAwesomeIcon icon={icons.faEthereum} color={'gray'} size="s" /> ETH
+        y más...
       </p>
     )
   }
@@ -59,14 +62,6 @@ class SubscriptionInfo extends Component {
                         size="s"
                       />{' '}
                       Disponible siempre
-                    </li>
-                    <li class="pb-1">
-                      <FontAwesomeIcon
-                        icon={icons.faCheckCircle}
-                        color={'green'}
-                        size="s"
-                      />{' '}
-                      <span>Más del 75% de exactitud</span>
                     </li>
                   </ul>
                 </div>
@@ -100,14 +95,6 @@ class SubscriptionInfo extends Component {
                         size="s"
                       />{' '}
                       <span>Disponible siempre</span>
-                    </li>
-                    <li class="pb-1">
-                      <FontAwesomeIcon
-                        icon={icons.faCheckCircle}
-                        color={'green'}
-                        size="s"
-                      />{' '}
-                      <span>Más del 75% de exactitud!</span>
                     </li>
                     <li class="pb-1">
                       <FontAwesomeIcon
