@@ -2,6 +2,7 @@
 
 const homeRoute = require('./home')
 const userRoute = require('./user')
+const apiRoute = require('./api')
 const errorRoute = require('./error')
 
 /**
@@ -10,7 +11,7 @@ const errorRoute = require('./error')
 const init = app => {
   app.use('*', homeRoute)
   app.use('/api/user', userRoute)
-  app.use('/api', userRoute)
+  app.use('/api', apiRoute)
   app.use('*', errorRoute)
 }
 

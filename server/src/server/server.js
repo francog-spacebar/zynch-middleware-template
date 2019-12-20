@@ -5,7 +5,7 @@ const {
   express,
   session,
   passport,
-  db,
+  /* db, */
   log,
   stats,
   redis
@@ -24,7 +24,7 @@ const listen = () => {
   const app = express.init()
   session.init(app)
   passport.init(app)
-  db.init()
+  // db.init()
   server = http.createServer(app).listen(config.port)
   log.info(`Listening at http://${config.host}:${config.port}`)
   redis.init()
