@@ -1,3 +1,27 @@
+# Zynch Middleware
+
+## Instrucciones
+
+1. Clonar el repositorio
+2. Una vez clonado, ejecutar `npm install` en la carpeta principal `/`, en `/server` y en `client`
+3. Existen varios scripts que se pueden ejecutar, ver el archivo `package.json` para más info.
+
+   Ejecuta `npm run dev`, por ejemplo
+
+```
+dev:client -> Compila y ejecuta el cliente en modo development
+dev:server -> Compila y ejecuta el servidor en modo development
+dev        -> Ambos
+build      -> Compila una versión de producción lista para el deploy
+start      -> Ejecuta la app en modo clúster,  en su versión production
+stop       -> Es obvio no?
+delete     -> Eliminar la app del registro interno de pm2 (servidor clúster)
+reload     -> Compila y ejecuta una nueva versión de producción del proyecto en modo clúster
+```
+
+4. ???
+5. Profit
+
 **Environment Files**
 
 Por motivos de seguridad hay que crear archivos que contengan las variables de entorno necesarias para tener las configuraciones correctas y poder realizar las conexiones
@@ -37,18 +61,19 @@ SKIP_PREFLIGHT_CHECK=true
 CHOKIDAR_USEPOLLING=true
 ```
 
-**Highlights**
+# Highlights
 
-- [Docker](https://www.docker.com/) containers
-- Using [HTTP/2](https://http2.github.io/)
-- Folder by Feature structure
-- Built-in React routing, [Redux](https://redux.js.org/)
-- Built-in local authentication with [Passport](http://www.passportjs.org/)
-- [EJS](https://ejs.co/) for rendering
-- Handling database with [Mongoose](https://mongoosejs.com/)
-- Email sending by [NodeMailer](https://nodemailer.com/about/)
-- [Winston](https://github.com/winstonjs/winston) for logging
-- Testing with [Mocha](https://mochajs.org/) and [Chai](https://www.chaijs.com/)
-- Clean code with [ESLint](https://eslint.org/), [JavaScript Standard Style](https://standardjs.com/)
-- [Webpack](https://webpack.js.org/) built production server
-- Using [PM2](http://pm2.keymetrics.io/) (cluster mode) for production
+- Estructura de carpetas por feature
+- [[Docker]](https://www.docker.com/) containers
+- [[HTTP/2]](https://http2.github.io/)
+- [[React]](ttps://reactjs.org/) Cliente
+- [[Redux]](https://redux.js.org/) Manejo de `state` en React
+- [[Passport]](http://www.passportjs.org/) Autenticación local por medio de cookies
+- [[EJS]](https://ejs.co/) Renderizado con EJS
+- [[MongoDB]](https://mongoosejs.com/) Usando Mongoose (conector entre Node y Mongo
+- [[NodeMailer]](https://nodemailer.com/about/) Emails
+- [[Winston]](https://github.com/winstonjs/winston) Logging
+- [[Mocha]](https://mochajs.org/) [Chai](https://www.chaijs.com/) para pruebas de código
+- [[ESLint]](https://eslint.org/) Linter con reglas estrictas para mantener la calidad y limpieza del código , [JavaScript Standard Style](https://standardjs.com/)
+- [[Webpack]](https://webpack.js.org/)
+- [[PM2]](http://pm2.keymetrics.io/) Modo Clúster en Producción
