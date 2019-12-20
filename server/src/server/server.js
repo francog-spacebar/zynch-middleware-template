@@ -7,7 +7,6 @@ const {
   passport,
   db,
   log,
-  websocket,
   stats,
   redis
 } = require('../config')
@@ -28,7 +27,6 @@ const listen = () => {
   db.init()
   server = http.createServer(app).listen(config.port)
   log.info(`Listening at http://${config.host}:${config.port}`)
-  websocket.init(server)
   redis.init()
   routes.init(app)
   stats.memory()
