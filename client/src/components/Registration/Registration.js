@@ -88,7 +88,7 @@ class App extends Component {
           </Typography>
           <ValidatorForm
             ref="form"
-            onSubmit={this.showModalDisclaimer}
+            onSubmit={this.register}
             onError={errors => console.log(errors)}
             className={styles.content}
           >

@@ -3,7 +3,6 @@ const request = require('request')
 const config = require('../config/').config
 const api = {}
 
-console.log(config)
 api.allowOwnerSwapBattery = (req, res, next) => {
   if (req.query.ownerId) {
     res.json({

@@ -26,9 +26,10 @@ const test = {
   redisUrl: process.env.REDIS_URL,
   emailAddress: process.env.EMAIL_ADDRESS,
   emailPassword: process.env.EMAIL_PASS,
-  mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
+  /** mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
-  )}@${process.env.DB_HOST}`,
+  )}@${process.env.DB_HOST}`, */
+  mongoUrl: process.env.DB_HOST,
   clientStaticFolder: path.join(basePath, 'client/build/static'),
   clientBuildFolder: path.join(basePath, 'client/build'),
   noodoeUrl: process.env.NOODOE_API_URL
@@ -45,9 +46,10 @@ const development = {
   redisUrl: process.env.REDIS_URL,
   emailAddress: process.env.EMAIL_ADDRESS,
   emailPassword: process.env.EMAIL_PASS,
-  mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
+  /** mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
-  )}@${process.env.DB_HOST}`,
+  )}@${process.env.DB_HOST}`, */
+  mongoUrl: process.env.DB_HOST,
   clientStaticFolder: path.join(basePath, 'client/build/static'),
   clientBuildFolder: path.join(basePath, 'client/build'),
   noodoeUrl: process.env.NOODOE_API_URL
@@ -63,9 +65,10 @@ const production = {
   redisUrl: process.env.REDIS_URL,
   emailAddress: process.env.EMAIL_ADDRESS,
   emailPassword: process.env.EMAIL_PASS,
-  mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
+  /** mongoUrl: `mongodb+srv://${process.env.DB_USER}:${encodeURIComponent(
     process.env.DB_PASS
-  )}@${process.env.DB_HOST}`,
+  )}@${process.env.DB_HOST}`, */
+  mongoUrl: process.env.DB_HOST,
   clientStaticFolder: path.join(basePath, 'client/static'),
   clientBuildFolder: path.join(basePath, 'client'),
   noodoeUrl: process.env.NOODOE_API_URL
