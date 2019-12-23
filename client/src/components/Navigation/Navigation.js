@@ -32,7 +32,9 @@ class Navigation extends Component {
         >
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <LinkContainer to="/">
-            <Navbar.Brand className={styles.navbarBrand}>Zynch</Navbar.Brand>
+            <Navbar.Brand className={styles.navbarBrand}>
+              Zynch Middleware
+            </Navbar.Brand>
           </LinkContainer>
 
           {this.props.authenticated ? (
@@ -44,6 +46,18 @@ class Navigation extends Component {
                 <Nav className="mr-auto">
                   <LinkContainer to="/profile">
                     <Nav.Link>Perfil</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/scooters">
+                    <Nav.Link>Scooters</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/batteries">
+                    <Nav.Link>Bateries</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/energy-stations">
+                    <Nav.Link>Energy Stations</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/search-user">
+                    <Nav.Link>Search User</Nav.Link>
                   </LinkContainer>
                 </Nav>
               ) : null}

@@ -13,6 +13,10 @@ import Navigation from './components/Navigation/Navigation'
 import Profile from './components/Profile/Profile'
 import Instructions from './components/Instructions/Instructions'
 import SubscriptionInfo from './components/SubscriptionInfo/SubscriptionInfo'
+import Scooters from './components/Scooters/Scooters'
+import EnergyStations from './components/EnergyStations/EnergyStations'
+import SearchUser from './components/SearchUser/SearchUser'
+import Batteries from './components/Batteries/Batteries'
 import { connect } from 'react-redux'
 import {
   setUrl,
@@ -110,6 +114,30 @@ class App extends Component {
               <PrivateRoute
                 path="/profile"
                 component={Profile}
+                authenticated={this.props.authenticated}
+                exact
+              />
+              <PrivateRoute
+                path="/scooters"
+                component={Scooters}
+                authenticated={this.props.authenticated}
+                exact
+              />
+              <PrivateRoute
+                path="/batteries"
+                component={Batteries}
+                authenticated={this.props.authenticated}
+                exact
+              />
+              <PrivateRoute
+                path="/energy-stations"
+                component={EnergyStations}
+                authenticated={this.props.authenticated}
+                exact
+              />
+              <PrivateRoute
+                path="/search-user"
+                component={SearchUser}
                 authenticated={this.props.authenticated}
                 exact
               />
