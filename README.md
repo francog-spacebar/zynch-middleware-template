@@ -31,6 +31,7 @@ En la carpeta server, crear una carpeta llamada `.env` y en ella crear los
 archivos `test.config.env`, `development.config.env` y `production.config.env`
 que contengan las siguientes variables. _En el archivo `production.config.env`,
 la variable `PORT` debe ser tener el valor `80`_.
+Sustituya las credenciales necesarias por los valores correctos.
 
 ```
 IP=0.0.0.0
@@ -59,6 +60,18 @@ REACT_APP_HOST=localhost
 REACT_APP_PORT=3001
 SKIP_PREFLIGHT_CHECK=true
 CHOKIDAR_USEPOLLING=true
+```
+
+** Redis **
+
+Instale el servidor Redis en su sistema.
+
+En Ubuntu 18.04:
+
+```
+sudo apt install redis-server
+sudo systemctl enable redis
+sudo systemctl start redis
 ```
 
 # Highlights
